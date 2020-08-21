@@ -1,3 +1,11 @@
 kind: pipeline
 type: kubernetes
 name: rspec.test
+
+steps:
+- name: docker  
+  image: plugins/docker
+  settings:
+    repo: fearoffish/rspec.test
+    commands:
+      - echo -n "latest,ci,$DRONE_BUILD_NUMBER" > .tags
